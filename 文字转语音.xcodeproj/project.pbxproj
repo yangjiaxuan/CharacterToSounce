@@ -16,6 +16,7 @@
 		455AC9D51DAF5968006E59FD /* _____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 455AC9D41DAF5968006E59FD /* _____Tests.m */; };
 		455AC9E01DAF5968006E59FD /* _____UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 455AC9DF1DAF5968006E59FD /* _____UITests.m */; };
 		455AC9EF1DAF6B1B006E59FD /* YSSpeech.m in Sources */ = {isa = PBXBuildFile; fileRef = 455AC9EE1DAF6B1B006E59FD /* YSSpeech.m */; };
+		45FC8C801DB07203006CADD8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FC8C7F1DB07203006CADD8 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		455AC9E11DAF5968006E59FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		455AC9ED1DAF6B1B006E59FD /* YSSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSSpeech.h; sourceTree = "<group>"; };
 		455AC9EE1DAF6B1B006E59FD /* YSSpeech.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSSpeech.m; sourceTree = "<group>"; };
+		45FC8C7F1DB07203006CADD8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		45FC8C811DB07203006CADD8 /* 文字转语音.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "文字转语音.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FC8C801DB07203006CADD8 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +92,7 @@
 				455AC9D31DAF5968006E59FD /* 文字转语音Tests */,
 				455AC9DE1DAF5968006E59FD /* 文字转语音UITests */,
 				455AC9B81DAF5967006E59FD /* Products */,
+				45FC8C7E1DB07203006CADD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +109,7 @@
 		455AC9B91DAF5967006E59FD /* 文字转语音 */ = {
 			isa = PBXGroup;
 			children = (
+				45FC8C811DB07203006CADD8 /* 文字转语音.entitlements */,
 				455AC9BD1DAF5967006E59FD /* AppDelegate.h */,
 				455AC9BE1DAF5967006E59FD /* AppDelegate.m */,
 				455AC9C01DAF5967006E59FD /* ViewController.h */,
@@ -143,6 +149,14 @@
 				455AC9E11DAF5968006E59FD /* Info.plist */,
 			);
 			path = "文字转语音UITests";
+			sourceTree = "<group>";
+		};
+		45FC8C7E1DB07203006CADD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45FC8C7F1DB07203006CADD8 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +226,12 @@
 				TargetAttributes = {
 					455AC9B61DAF5967006E59FD = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = KJ4J9TVR8X;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 					455AC9CF1DAF5968006E59FD = {
 						CreatedOnToolsVersion = 8.0;
@@ -429,7 +447,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KJ4J9TVR8X;
+				CODE_SIGN_ENTITLEMENTS = "文字转语音/文字转语音.entitlements";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "文字转语音/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sitemap.com.-----";
@@ -441,7 +460,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KJ4J9TVR8X;
+				CODE_SIGN_ENTITLEMENTS = "文字转语音/文字转语音.entitlements";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "文字转语音/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "sitemap.com.-----";
@@ -514,6 +534,7 @@
 				455AC9E61DAF5968006E59FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		455AC9E71DAF5968006E59FD /* Build configuration list for PBXNativeTarget "文字转语音Tests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +543,7 @@
 				455AC9E91DAF5968006E59FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		455AC9EA1DAF5968006E59FD /* Build configuration list for PBXNativeTarget "文字转语音UITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +552,7 @@
 				455AC9EC1DAF5968006E59FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

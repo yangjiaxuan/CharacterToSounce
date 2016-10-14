@@ -18,11 +18,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="     10月12日一大早，《消费主张》记者在方仕通科技广场看到一个仍然在售卖三星Note7手机的商家，销售人员非常肯定地告诉记者，在他们这里不仅能买到三星Note7手机，并且价格比专卖店." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="df3-rc-ZaY">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="df3-rc-ZaY">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="215" id="rna-ws-ISy"/>
                                 </constraints>
+                                <mutableString key="text">1、等我有钱了，我就买一辆公交车，专门走公交专用车道，专门停在公交车站，等有人想上车了，我就说：对不起，这是私家车 
+2、客官 您是打尖还是住店
+我大便
+3、我年轻过，你们呢，老过么？
+4、绅士无非就是耐心的狼
+5、所有的人都站在一边并不一定是好事，譬如他们都站在船的一边
+6、别紧张,我不是什么好人……
+7、你说…你喜欢我?其实…我一开始…其实我也…唉跟你说了吧,其实我也挺喜欢我自己的.
+
+8、作为失败的典型,你实在是太成功了
+
+9、小时候刚学骑自行车，还不太会就跑到大街上，看到前面一个老大爷在走，自己感觉要撞上，就大叫，不要动，不要动。那个老大爷一下站在那里没有动，结果我拐来拐去，还是撞上了。老大爷站起来说，你瞄准呢
+
+10、如果有300W，大家说是买奔驰好还是法拉利好呀。 
+回复：最好买300辆二手奥托，再雇300个司机，让他们跟在你后面开，一会排成s形，一会排成B形
+
+11、多多微笑，阴天谨防情绪感冒！
+
+12、我自横刀向天笑，笑完我就去睡觉！
+
+13、 路遥知马力不足，日久见人心叵测
+
+14、我爸面对我发胖一事发表了看法：没有韩红的命，还得了韩红的病。
+
+15、我这人从不记仇,一般有仇当场我就报了。
+
+16、别在我的坟前哭。脏了我轮回的路。
+
+17、是这样的张总，你在家里的电脑上按了CTRL+C，然后在公司的电脑上再按CTRL+V是肯定不行的。即使同一篇文章也不行。不不，多贵的电脑都不行。
+
+18、我以为你只是1和3中间的数，没想到你还是1和3俩数的组合。
+
+20、一食人族去班，经理再三交代不能吃同事，答应。过几天忍不住，偷吃一个清洁工
+
+人，当即被发现。其感悟是：千万别吃真正做事的人。
+
+21、现在你骂我，是因为你还不了解我，等你以后了解了我，你一定会动手打我的。
+
+22、人永远不知道谁哪次不经意的跟你说了再见之后就真的再也不见了。
+
+23、通往成功的路，总是在施工中。
+
+24、我不下地狱，谁爱下谁下
+
+25、猜一句英文：「ABABBBAAAAAABBBABAAAABBBBAABBBAAAAA」？〈答案：Long time no C〉
+
+26、想你的眉目，想到模糊。——突然觉得，思念大都如此，越来越淡（我依稀记得这是王菲《我也不想这样》的歌词，不知对否？）
+
+27、在经年后，感叹，那两个少年：一个惊艳了时光，一个温柔了岁月。
+
+28、如果她（他）对你说：“忘了我吧。”你告诉对方：“我一直没记住。”
+
+29、你对咱的好 俺永远记得 俺做鬼都不会放过你的。
+
+30、各位女同事,请不要对我放电,我老婆有来电显示.
+
+31、微笑，挥手，再见，结束。
+
+32、我想起来，我曾立志做一个好玩的人
+
+33、将薪比薪的想一下，算了，不想活了。
+
+34、那啥，就给我个经济适用坟好了。</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

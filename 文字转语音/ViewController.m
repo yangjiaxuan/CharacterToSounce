@@ -36,8 +36,9 @@
 }
 - (IBAction)pause:(id)sender {
     if (!((UIButton *)sender).isSelected) {
-        [_speech pauseSpeaking];
-        [sender setSelected:YES];
+        BOOL isPauseSuccess = [_speech pauseSpeaking];
+        NSLog(@"isPauseSuccess :___%xb_____",isPauseSuccess);
+        [sender setSelected:isPauseSuccess];
     }
     else{
         [_speech continueSpeaking];

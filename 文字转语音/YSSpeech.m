@@ -15,7 +15,9 @@
     AVSpeechSynthesisVoice *_speechVoice;
     NSInteger               _currentSpeakIndex;
     NSString               *_currentSpeakWords;
+    NSInteger               _currentRepeatCount;
     BOOL                    _isSetComplete; // 设置数据是否完成
+    BOOL                    _isPause; // 是否停止
 }
 @end
 
@@ -37,29 +39,38 @@
     _postUtteranceDelay = 0.0;
     _rate               = 0.5;
     _volume             = 1;
+    _repeatCount        = 1;
+    _currentSpeakIndex  = _repeatCount;
+    _isPause            = YES;
 }
 
 
 #pragma mark ----------- 读的逻辑 -----------------
 - (void)startSpeaking{
+    _currentRepeatCount = _repeatCount;
+    _isPause = NO;
+    [self startToSpeak];
+}
+
+- (void)startToSpeak{
     [_speechSynthier stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
     if (!_currentSpeakWords) {
         return;
     }
     [_speechSynthier speakUtterance:[self speechUtteranceWithSpeakWords:_currentSpeakWords]];
 }
-
 - (BOOL)pauseSpeaking{
-
+    _isPause = YES;
     return [_speechSynthier pauseSpeakingAtBoundary:AVSpeechBoundaryWord];
 }
 
 - (BOOL)continueSpeaking{
+    _isPause = NO;
     return [_speechSynthier continueSpeaking];
 }
 
 - (BOOL)stopSpeaking{
-
+    _currentRepeatCount = 1;
     return [_speechSynthier stopSpeakingAtBoundary:AVSpeechBoundaryWord];
 }
 #pragma mark -------- 代理 ----------
@@ -68,19 +79,24 @@
         [self.delegate speechdidStart:self];
     }
     _isSetComplete = YES;
-
 }
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance{
-    if (_repeatCount == 0) {
+    NSLog(@"repeatCount:%lu",_currentRepeatCount);
+    if (_currentRepeatCount == 1) {
         if ([self.delegate respondsToSelector:@selector(speechdidFinish:)]) {
             [self.delegate speechdidFinish:self];
         }
+        _currentRepeatCount = 1;
     }
     else{
         _currentSpeakWords = _speakWords;
-        [self startSpeaking];
+        _currentRepeatCount --;
+        if (_isPause == YES) {
+            [self pauseSpeaking];
+            return;
+        }
+        [self startToSpeak];
     }
-    _repeatCount --;
 }
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didPauseSpeechUtterance:(AVSpeechUtterance *)utterance{
     if ([self.delegate respondsToSelector:@selector(speechdidPause:)]) {
@@ -101,10 +117,9 @@
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance{
     _currentSpeakIndex = characterRange.location + characterRange.length;
     
-        if ([self.delegate respondsToSelector:@selector(speech:willSpeakRangeOfSpeechString:)]) {
-            [self.delegate speech:self willSpeakRangeOfSpeechString:characterRange];
-        }
-   
+    if ([self.delegate respondsToSelector:@selector(speech:willSpeakRangeOfSpeechString:)]) {
+        [self.delegate speech:self willSpeakRangeOfSpeechString:characterRange];
+    }
 }
 
 // 重新开始读
@@ -112,8 +127,9 @@
 
     NSInteger length   = _currentSpeakWords.length;
     _currentSpeakWords = [_currentSpeakWords substringWithRange:NSMakeRange(_currentSpeakIndex, length - _currentSpeakIndex)];
-    [self startSpeaking];
+    [self startToSpeak];
 }
+
 
 #pragma mark ----------- set get ----------------
 
@@ -139,7 +155,6 @@
         return;
     }
     _isSetComplete = NO;
-    
     _volume= volume;
     [self resetReadWord];
 }
@@ -171,12 +186,12 @@
 }
 
 - (void)setRepeatCount:(NSInteger)repeatCount{
-
-    if (repeatCount < _repeatCount) {
-        _repeatCount = 0;
+    _repeatCount = repeatCount;
+    if (repeatCount < _currentRepeatCount) {
+        _currentRepeatCount = 1;
     }
     else{
-        _repeatCount = _repeatCount - repeatCount;
+        _currentRepeatCount = repeatCount - _currentRepeatCount;
     }
 }
 - (AVSpeechUtterance *)speechUtteranceWithSpeakWords:(NSString *)speakWords{
